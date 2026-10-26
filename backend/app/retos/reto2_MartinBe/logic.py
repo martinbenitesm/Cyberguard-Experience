@@ -10,9 +10,9 @@ HINT_PENALTY_RATIO = 0.30
 WRONG_ANSWER_PENALTY_RATIO = 0.50
 
 DIFFICULTY_POINTS = {
-    "easy": 40,
-    "medium": 50,
-    "hard": 60,
+    "easy": 80,
+    "medium": 100,
+    "hard": 120,
 }
 
 _scenarios_cache = None
@@ -38,11 +38,11 @@ def crear_sesion_reto2(nickname: str) -> dict:
         if diff in por_dificultad:
             por_dificultad[diff].append(e)
 
-    # 2 casos fáciles, 2 medios, 2 difíciles (Total: 6 casos, máx 300 pts)
+    # 1 caso fácil, 1 medio y 1 difícil (Total: 3 casos, máx 300 pts)
     seleccionados = []
     for diff in ["easy", "medium", "hard"]:
         pool = por_dificultad[diff]
-        k = min(2, len(pool))
+        k = min(1, len(pool))
         seleccionados.extend(random.sample(pool, k=k))
 
     random.shuffle(seleccionados)
